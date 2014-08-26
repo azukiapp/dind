@@ -95,5 +95,9 @@ else
 	else
 		docker -d $EXTRA_ARGS &
 	fi
-	exec bash ${@}
+
+  # Extra script
+	[ -n "$EXTRA_SCRIPT" ] && . "$EXTRA_SCRIPT"
+
+	bash ${@}
 fi
