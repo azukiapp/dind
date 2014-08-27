@@ -41,9 +41,9 @@ do
         # Systemd and OpenRC (and possibly others) both create such a
         # cgroup. To avoid the aforementioned bug, we symlink "foo" to
         # "name=foo". This shouldn't have any adverse effect.
-        echo $SUBSYS | grep -q ^name= && {
+        echo $SUBSYS | grep -q "^name=" && {
                 NAME=$(echo $SUBSYS | sed s/^name=//)
-                ln -s $SUBSYS $CGROUP/$NAME
+                ln -s $CGROUP/$SUBSYS $CGROUP/$NAME
         }
 
         # Likewise, on at least one system, it has been reported that
