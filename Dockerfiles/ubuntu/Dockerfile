@@ -14,7 +14,7 @@ RUN apt-get install -qqy lxc-docker
 RUN apt-get install -qqy git curl man
 
 # libnss-resolver
-RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v0.2.0/ubuntu14-libnss-resolver_0.2.0_amd64.deb -o /tmp/libnss-resolver.deb
+RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v0.2.1/ubuntu14-libnss-resolver_0.2.1_amd64.deb -o /tmp/libnss-resolver.deb
 RUN dpkg -i /tmp/libnss-resolver.deb
 
 # Install the magic wrapper.
