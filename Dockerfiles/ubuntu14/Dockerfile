@@ -3,7 +3,7 @@ MAINTAINER jerome.petazzoni@docker.com
 
 # Let's start with some basic stuff.
 RUN apt-get update -qq
-RUN apt-get install -qqy iptables ca-certificates lxc
+RUN apt-get install -qqy iptables ca-certificates lxc make
 
 # Install Docker from Docker Inc. repositories.
 RUN apt-get install -qqy apt-transport-https
