@@ -15,7 +15,8 @@ RUN apt-get install -qqy git curl \
                          man tmux make
 
 # libnss-resolver
-RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v0.2.0/ubuntu14-libnss-resolver_0.2.0_amd64.deb -o /tmp/libnss-resolver.deb
+ENV LIBNSS_VERSION 0.2.1
+RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/ubuntu14-libnss-resolver_${LIBNSS_VERSION}_amd64.deb -o /tmp/libnss-resolver.deb
 RUN dpkg -i /tmp/libnss-resolver.deb
 
 # Install the magic wrapper.
