@@ -3,7 +3,7 @@ MAINTAINER everton@azukiapp.com
 
 # Let's start with some basic stuff.
 RUN yum -y update; yum clean all
-RUN yum -y install git docker-io net-tools; yum clean all
+RUN yum -y install git docker-io net-tools make tmux; yum clean all
 
 # libnss-resolver
 RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v0.2.0/fedora20-libnss-resolver-0.2.0-1.x86_64.rpm -o /tmp/libnss-resolver-0.2.0-1.x86_64.rpm

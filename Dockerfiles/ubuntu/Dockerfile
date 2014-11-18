@@ -11,7 +11,8 @@ RUN echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 RUN apt-get update -qq
 RUN apt-get install -qqy lxc-docker
-RUN apt-get install -qqy git curl man
+RUN apt-get install -qqy git curl \
+                         man tmux make
 
 # libnss-resolver
 RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v0.2.0/ubuntu14-libnss-resolver_0.2.0_amd64.deb -o /tmp/libnss-resolver.deb
