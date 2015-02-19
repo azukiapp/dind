@@ -1,9 +1,16 @@
 FROM fedora:20
-MAINTAINER everton@azukiapp.com
+MAINTAINER Azuki
 
 # Let's start with some basic stuff.
-RUN yum -y update; yum clean all
-RUN yum -y install git docker-io net-tools make tmux; yum clean all
+RUN yum -y update \
+  && yum -y install \
+    git \
+    docker-io \
+    net-tools \
+    make \
+    tmux \
+    e2fsprogs \
+  && yum clean all
 
 # libnss-resolver
 ENV LIBNSS_VERSION 0.2.1
@@ -17,4 +24,3 @@ RUN chmod +x /usr/local/bin/wrapdocker
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 CMD ["wrapdocker"]
-

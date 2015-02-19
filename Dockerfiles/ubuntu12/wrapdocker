@@ -9,7 +9,7 @@ CGROUP=/sys/fs/cgroup
 
 mountpoint -q $CGROUP ||
 	mount -n -t tmpfs -o uid=0,gid=0,mode=0755 cgroup $CGROUP || {
-		echo "Could not make a tmpfs mount. Did you use -privileged?"
+		echo "Could not make a tmpfs mount. Did you use --privileged?"
 		exit 1
 	}
 
@@ -17,7 +17,7 @@ if [ -d /sys/kernel/security ] && ! mountpoint -q /sys/kernel/security
 then
     mount -t securityfs none /sys/kernel/security || {
         echo "Could not mount /sys/kernel/security."
-        echo "AppArmor detection and -privileged mode might break."
+        echo "AppArmor detection and --privileged mode might break."
     }
 fi
 
@@ -87,17 +87,17 @@ rm -rf /var/run/docker.pid
 # otherwise, spawn a shell as well
 if [ "$PORT" ]
 then
-	exec docker -d -H 0.0.0.0:$PORT $EXTRA_ARGS
+	exec docker -d -H 0.0.0.0:$PORT $DOCKER_DAEMON_ARGS
 else
 	if [ "$LOG" == "file" ]
 	then
-		docker -d $EXTRA_ARGS &>/var/log/docker.log &
+		docker -d $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
 	else
-		docker -d $EXTRA_ARGS &
+		docker -d $DOCKER_DAEMON_ARGS &
 	fi
 
-  # Extra script
+	# Extra script
 	[ -n "$EXTRA_SCRIPT" ] && . "$EXTRA_SCRIPT"
 
-	bash ${@}
+	exec ${1-bash}
 fi

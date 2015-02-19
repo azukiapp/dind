@@ -1,5 +1,5 @@
 FROM golang:1.3.3-cross
-MAINTAINER everton@azukiapp.com
+MAINTAINER Azuki
 
 # Install Docker
 RUN apt-get update -qq
@@ -12,4 +12,3 @@ RUN chmod +x /usr/local/bin/wrapdocker
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 CMD ["wrapdocker"]
-
