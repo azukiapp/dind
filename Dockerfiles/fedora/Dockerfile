@@ -1,19 +1,19 @@
 FROM fedora:20
-MAINTAINER Azuki
+MAINTAINER Azuki <support@azukiapp.com>
 
 # Let's start with some basic stuff.
 RUN yum -y update \
   && yum -y install \
     git \
-    docker-io \
     net-tools \
     make \
     tmux \
     e2fsprogs \
+  && curl -sSL https://get.docker.com/ | sh \
   && yum clean all
 
 # libnss-resolver
-ENV LIBNSS_VERSION 0.2.1
+ENV LIBNSS_VERSION 0.3.0
 RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/fedora20-libnss-resolver-${LIBNSS_VERSION}-1.x86_64.rpm -o /tmp/libnss-resolver-${LIBNSS_VERSION}-1.x86_64.rpm
 RUN rpm -i /tmp/libnss-resolver-${LIBNSS_VERSION}-1.x86_64.rpm
 
