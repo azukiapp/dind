@@ -1,5 +1,5 @@
-FROM debian:jessie
-MAINTAINER Azuki
+FROM ubuntu:15.10
+MAINTAINER jerome.petazzoni@docker.com
 
 # Let's start with some basic stuff.
 RUN apt-get update -qq \
@@ -17,7 +17,7 @@ RUN apt-get update -qq \
 
 # libnss-resolver
 ENV LIBNSS_VERSION 0.3.0
-RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/debian8-0-libnss-resolver_${LIBNSS_VERSION}_amd64.deb -o /tmp/libnss-resolver.deb \
+RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/ubuntu14-libnss-resolver_${LIBNSS_VERSION}_amd64.deb -o /tmp/libnss-resolver.deb \
   && dpkg -i /tmp/libnss-resolver.deb
 
 # Install the magic wrapper.

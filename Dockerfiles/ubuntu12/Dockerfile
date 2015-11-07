@@ -17,8 +17,8 @@ RUN apt-get update -qq \
 
 # libnss-resolver
 ENV LIBNSS_VERSION 0.3.0
-RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/ubuntu12-libnss-resolver_${LIBNSS_VERSION}_amd64.deb -o /tmp/libnss-resolver.deb
-RUN dpkg -i /tmp/libnss-resolver.deb
+RUN curl -L https://github.com/azukiapp/libnss-resolver/releases/download/v${LIBNSS_VERSION}/ubuntu12-libnss-resolver_${LIBNSS_VERSION}_amd64.deb -o /tmp/libnss-resolver.deb \
+  && dpkg -i /tmp/libnss-resolver.deb
 
 # Install the magic wrapper.
 ADD ./wrapdocker /usr/local/bin/wrapdocker

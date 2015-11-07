@@ -43,7 +43,7 @@ do
         # "name=foo". This shouldn't have any adverse effect.
         echo $SUBSYS | grep -q "^name=" && {
                 NAME=$(echo $SUBSYS | sed s/^name=//)
-                ln -s $CGROUP/$SUBSYS $CGROUP/$NAME
+                [ ! -e $CGROUP/$NAME ] && ln -s $CGROUP/$SUBSYS $CGROUP/$NAME
         }
 
         # Likewise, on at least one system, it has been reported that
@@ -91,9 +91,9 @@ then
 else
     if [ "$LOG" == "file" ]
     then
-        docker -d $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
+        docker daemon $DOCKER_DAEMON_ARGS &>/var/log/docker.log &
     else
-        docker -d $DOCKER_DAEMON_ARGS &
+        docker daemon $DOCKER_DAEMON_ARGS &
     fi
 
     # Extra script
