@@ -6,7 +6,7 @@ RUN yum -y update \
   && yum -y install \
     git \
     net-tools \
-    make \
+    make automake gcc gcc-c++ \
     tmux \
     e2fsprogs \
   && curl -sSL https://get.docker.com/ | sh \

@@ -4,6 +4,7 @@ MAINTAINER Azuki <support@azukiapp.com>
 # Let's start with some basic stuff.
 RUN apt-get update -qq \
   && apt-get install -qqy \
+    build-essential \
     apt-transport-https \
     ca-certificates \
     curl \
