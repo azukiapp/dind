@@ -12,6 +12,7 @@ RUN apt-get update -qq \
     iptables \
     make \
     tmux \
+    python \
   && curl -sSL https://get.docker.com | sh \
   && apt-get clean -qq \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
